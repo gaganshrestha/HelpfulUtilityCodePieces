@@ -37,7 +37,7 @@ public String[][] generateMatrixFromArray(String[] actualList, int row, int colu
 			System.out.println("List contains more elements than matrix size. List should contain number of elements less than or equal to matrix size.\nNote: Matrix size = row * column." );
 		}
 		
-		System.out.println(Arrays.deepToString(matrixFromList).replace("], ", "]\n"));
+		System.out.println(Arrays.deepToString(matrixFromList).replace("], ", "]\n")); //display the matrix in the matrix form.
 		return matrixFromList;
 		
 	}
