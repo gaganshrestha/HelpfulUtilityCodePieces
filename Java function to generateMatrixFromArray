@@ -1,0 +1,43 @@
+/*
+* This function coverts a given array into matrix.
+* Function takes the array items in linear fashion and populates them into matrix starting from matrix[0][0]. It fills up the columns of first row and progresses toward subsequent rows.
+* If number of elements are less than matrix size, then the cell value will be padded with null. 
+* If number of elements are more than matrix size, then it returns empty matrix of size matrix[0][0]
+*
+* This function takes following inputs:
+* String[] actualList : Array of strings e.g., {"Python","Java","C"}
+* int row : number of rows in the generated matrix
+* int column : number of columns in the generated matrix
+*/ 
+
+
+public String[][] generateMatrixFromArray(String[] actualList, int row, int column){
+		
+		String matrixFromList[][]= new String[0][0];
+		
+		if(actualList.length <= (row*column)) {		
+			matrixFromList = new String[row][column];
+			int listStartIndex = 0;
+			boolean done = false;
+			for(int matRow = 0; matRow < row && !done; matRow++ ) {
+				for(int matCol = 0; matCol < column; matCol++) {
+					if(listStartIndex<actualList.length) {
+						matrixFromList[matRow][matCol]= actualList[listStartIndex];
+						listStartIndex++;					
+					}
+					else {
+						done=true;
+						break;
+					}
+
+				}
+			}
+		}
+		else {
+			System.out.println("List contains more elements than matrix size. List should contain number of elements less than or equal to matrix size.\nNote: Matrix size = row * column." );
+		}
+		
+		System.out.println(Arrays.deepToString(matrixFromList).replace("], ", "]\n"));
+		return matrixFromList;
+		
+	}
