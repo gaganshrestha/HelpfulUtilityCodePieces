@@ -1,0 +1,47 @@
+/*
+* This function coverts a given array into matrix.
+* The function determines the number of columns based on number of rows parameter and length of the array.
+* Function takes the array items in linear fashion and populates them into matrix starting from matrix[0][0]. It fills up the columns of first row and progresses toward subsequent rows.
+* If number of elements are less than matrix size, then the cell value will be padded with null. 
+* It is necessary to have the number of elements in array in such a way that it is possible to generate a matrix based on given number of rows where the elements fit precisely in the matrix. If not the function will return an error.
+*
+* This function takes following inputs:
+* String[] actualList : Array of strings e.g., {"Python","Java","C"}
+* int row : number of rows in the generated matrix
+*/ 
+
+
+public String[][] getMatrixFromArray(String[] actualList, int row){
+		
+		String matrixFromList[][] = new String[0][0];
+		
+		if(actualList.length%row != 0) {
+			System.out.println("Number of elements in the list does not fit in the generated matrix with given row size.\nNote: \nNumber of columns = Number of list elments/row.\nMatrix size = row*column ");
+			
+		}
+		else {
+			int column = (actualList.length/row);
+			
+			matrixFromList = new String[row][column];
+						
+			int listStartIndex = 0;
+			
+			for(int matrixRow = 0; matrixRow < row ; matrixRow++ ) {
+				for(int matrixCol = 0; matrixCol < column; matrixCol++) {
+					if(listStartIndex<actualList.length) {
+						matrixFromList[matrixRow][matrixCol]= actualList[listStartIndex];
+						listStartIndex++;					
+					}
+					else {
+						
+						break;
+					}
+
+				}
+			}
+
+		}
+		System.out.println(Arrays.deepToString(matrixFromList).replace("], ", "]\n")); //display the matrix in the matrix form.
+		return matrixFromList;
+		
+	}
